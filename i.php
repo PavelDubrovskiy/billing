@@ -4,4 +4,5 @@ phpinfo();
 print '<pre>';
 print_r($stdin);
 print '</pre>';*/
+//echo 'ok';
 ?>
