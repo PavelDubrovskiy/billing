@@ -9,7 +9,7 @@
 <fieldset>
 	<legend>Запрос на оплату покупки /api/payment/</legend>
 	<form method="post" action="/api/payment/" id="orderForm">
-		<input type="hidden" name="token" value="1b143fed33f7671ba9c4b958b48e102f17d9c8c6e48af4e37b3132291e15a39e">
+		<input type="hidden" name="token" value="8beee52ef7289c305650aca107734a12e20f51e5b61d5cf94762a7f625356b33">
 		<input type="text" placeholder="request_id" name="request_id" value=""> 
 		<input type="text" placeholder="user_id" name="user_id" value="">
 		<input type="text" placeholder="amount" name="amount" value="">
@@ -20,11 +20,20 @@
 <fieldset>
 	<legend>Запрос на вывод средств /api/request/</legend>
 	<form method="post" action="/api/request/" id="requestForm">
-		<input type="hidden" name="token" value="1b143fed33f7671ba9c4b958b48e102f17d9c8c6e48af4e37b3132291e15a39e">
+		<input type="hidden" name="token" value="8beee52ef7289c305650aca107734a12e20f51e5b61d5cf94762a7f625356b33">
 		<input type="text" placeholder="request_id" name="request_id" value=""> 
 		<input type="text" placeholder="user_id" name="user_id" value="">
 		<input type="text" placeholder="amount" name="amount" value="">
 		<input type="hidden" name="currency" value="RUB">
 	</form>
 	<button onclick="$('#requestForm').submit()">submit</button>
+</fieldset>
+
+<fieldset>
+	<legend>Запрос Баланса пользователя /api/balance/</legend>
+	<form method="post" action="/api/balance/" id="balanceForm">
+		<input type="hidden" name="token" value="8beee52ef7289c305650aca107734a12e20f51e5b61d5cf94762a7f625356b33">
+		<input type="text" placeholder="user_id" name="user_id" value="">
+	</form>
+	<button onclick="$('#balanceForm').submit()">submit</button>
 </fieldset>

@@ -3,8 +3,9 @@ class SettingsController extends Site{
 	function __construct(){
 		$this->checkRights();
 		if(Funcs::$uri[2]==''){
-			$model=new Settings;
-			View::render('settings/list',array('list'=>$model->getList()));
+			$this->redirect('/settings/1/');
+			//$model=new Settings;
+			//View::render('settings/list',array('list'=>$model->getList()));
 		}elseif(is_numeric(Funcs::$uri[2])){
 			View::render('settings/listElem',array('list'=>Settings::getElemList(),'parent'=>Settings::getParent()));
 		}

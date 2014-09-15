@@ -156,5 +156,15 @@ class Api{
 			DB::exec($sql);
 		}
 	}
+	
+	public function balance(){
+		$sql='SELECT * FROM {{iusers}} WHERE code=\''.$_POST['user_id'].'\'';
+		$data=DB::getRow($sql);
+		$error='';
+		if($data['id']=='')
+		$error='Wrong user';
+		return array('balance'=>$data['balance'], 'error'=>$error);
+	}
+	
 }
 ?>

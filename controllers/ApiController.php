@@ -63,5 +63,26 @@ class ApiController extends Site{
 			$this->redirect(Funcs::$conf['settings']['source']);
 		}*/
 	}
+	
+	function balance(){
+		DB::escapePost();
+		if(($_POST)&&($_POST['user_id']!='')&&(is_numeric($_POST['user_id']))){
+			$token=Api::getToken();
+			if($_POST['token']==$token){
+				$dt=Api::balance();
+				if ($dt['error']!='')
+				print json_encode(array('error'=>$dt['error']));
+				else
+				print json_encode(array('balance'=>$dt['balance']));
+				//print View::getRenderEmpty('api/payment');
+			}else{
+				print json_encode(array('error'=>'Wrong token'));
+			}
+		}else{
+			print json_encode(array('error'=>'Post empty'));
+			//$this->redirect(Funcs::$conf['settings']['source']);
+		}
+	}
+	
 }
 ?>

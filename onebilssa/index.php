@@ -4,7 +4,7 @@ $user_agent = $_SERVER ['HTTP_USER_AGENT']; // ie6 must die
 if (stripos ( $user_agent, 'MSIE 6.0' ) !== false && stripos ( $user_agent, 'IEMobile' ) === false) {
 	header ( "Location: /ie6/ie6.html" );die();
 }
-if($_GET['clear']=='cookies'){
+if((isset($_GET['clear']))&&($_GET['clear']=='cookies')){
 	$_COOKIE[$key]=array();
 	$_SESSION=array();
 	echo '<script>document.location.href="/";</script>';
@@ -63,7 +63,7 @@ if($current_dir){
 				while ($plugin = readdir($pdir)){
 					if (strpos($plugin,'Controller.php')){
 						$controller = strtolower(substr($plugin,0,strlen($plugin)-14));
-						$controllers[$controller]=array(name=>$controller, path=> PLUGINS_DIR.$pluginDir.'/controllers/');
+						$controllers[$controller]=array('name'=>$controller, 'path'=> PLUGINS_DIR.$pluginDir.'/controllers/');
 					}
 				}
 				$pdir=opendir($_SERVER['DOCUMENT_ROOT'].PLUGINS_DIR.$pluginDir.'/models/');
@@ -92,7 +92,7 @@ if($current_dir){
 	while ($class = readdir($dir)){
 		if (strpos($class,'Controller.php')){
 			$controller = strtolower(substr($class,0,strlen($class)-14));
-			$controllers[$controller]=array(name=>$controller, path=>$current_dir.'/controllers/');
+			$controllers[$controller]=array('name'=>$controller, 'path'=>$current_dir.'/controllers/');
 		}
 	}
 	if(array_key_exists(Funcs::$uri[1],$controllers)){
